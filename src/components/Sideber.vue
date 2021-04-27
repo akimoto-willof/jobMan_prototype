@@ -2,48 +2,50 @@
 <div id="sideber">
     <button @click="trrigerBtn">>></button>
 
-    <div v-show="button">
-        <div class="top">
-            <h2>複数条件検索</h2>
-            <h3>条件クリア</h3>
+    <transition>
+        <div v-show="button">
+            <div class="top">
+                <h2>複数条件検索</h2>
+                <h3>条件クリア</h3>
+            </div>
+            <ul>
+                <li>
+                    <div>求人ID（10桁数字）</div>
+                    <input type="text">
+                </li>
+                <li>
+                    <div>事業部</div>
+                </li>
+                <li>
+                    <div>所課</div>
+                </li>
+                <li>
+                    <div>事業担当</div>
+                </li>
+                <li>
+                    <div>雇用形態</div>
+                </li>
+                <li>
+                    <div>案件種別</div>
+                </li>
+                <li>
+                    <div>ステータス</div>
+                </li>
+                <li>
+                    <div>掲載可否</div>
+                </li>
+                <li>
+                    <div>人選期日</div>
+                </li>
+                <li>
+                    <div>開始日</div>
+                </li>
+                <li>
+                    <div>性別</div>
+                </li>        
+            </ul>
         </div>
-        <ul>
-            <li>
-                <div>求人ID（10桁数字）</div>
-                <input type="text">
-            </li>
-            <li>
-                <div>事業部</div>
-            </li>
-            <li>
-                <div>所課</div>
-            </li>
-            <li>
-                <div>事業担当</div>
-            </li>
-            <li>
-                <div>雇用形態</div>
-            </li>
-            <li>
-                <div>案件種別</div>
-            </li>
-            <li>
-                <div>ステータス</div>
-            </li>
-            <li>
-                <div>掲載可否</div>
-            </li>
-            <li>
-                <div>人選期日</div>
-            </li>
-            <li>
-                <div>開始日</div>
-            </li>
-            <li>
-                <div>性別</div>
-            </li>        
-        </ul>
-    </div>
+    </transition>
 
 </div>
 </template>
@@ -74,5 +76,19 @@ export default {
 
 ul {
     list-style: none;
+}
+/* 表示アニメーションをする前のスタイル */
+.v-enter {
+  opacity: 0;
+}
+
+/* 表示アニメーション後のスタイル */
+.v-enter-to {
+  opacity: 1;
+}
+
+/* 表示アニメーション動作中のスタイル */
+.v-enter-active {
+  transition: all 1000ms;
 }
 </style>

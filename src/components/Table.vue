@@ -20,7 +20,7 @@
         <draggable tag="ul" :options="{group:'ITEMS'}">
             <li>
                 <div class="title">求人ID</div>
-                <div class="list" v-for="(item, index) in sortedItems" :key="`first-${index}`">
+                <div class="list" v-for="(item, index) in items" :key="`first-${index}`">
                     <div class="list-nav">{{item.id}}</div>
                 </div>
             </li>
@@ -151,7 +151,7 @@ export default {
         selectAllChecked (){
             if(this.checked) {
                 this.checked_items = []
-                this.checked = true
+                this.checked = false
             } else {
                 this.checked_items = []
                 for (let item in this.items) {
