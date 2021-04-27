@@ -3,74 +3,78 @@
     <div id="box1" class="box">
         <ul class="check">
             <li>
-                <input type="checkbox" class="checkbox-main" v-model="checked_all">
-                {{ checked_items }}
+                <input type="checkbox" class="checkbox-main" :checked="checked" @click="selectAllChecked">
             </li>
             <li>
-                <input type="checkbox" class="checkbox" v-for="item in items" :key="item" @click="cheked_items">
+                <input
+                type="checkbox"
+                class="checkbox"
+                v-for="(item, index) in items"
+                :key="`${index}`"
+                v-model="checked_items"
+                :value="item.id"
+                @click="select"
+                >
             </li>
         </ul>
         <draggable tag="ul" :options="{group:'ITEMS'}">
             <li>
-                <div class="title">
-                    求人ID
-                <button class="button" @click="changeOrder">⇅</button>
-                </div>
-                <div class="list" v-for="item in sortedItems" :key="item.id">
+                <div class="title">求人ID</div>
+                <div class="list" v-for="(item, index) in sortedItems" :key="`first-${index}`">
                     <div class="list-nav">{{item.id}}</div>
                 </div>
             </li>
             <li>
                 <div class="title">クライアント名</div>
-                <div class="list" v-for="item in items" :key="item.name">
+                <div class="list" v-for="(item, index) in items" :key="`second-${index}`">
                     <div class="list-nav">{{item.name}}</div>
                 </div>
             </li>
             <li>
                 <div class="title">ステータス</div>
-                <div class="list" v-for="item in items" :key="item.status">
+                <div class="list" v-for="(item, index) in items" :key="`thrid-${index}`">
                     <div class="list-nav">{{item.status}}</div>
                 </div>
             </li>
             <li>
                 <div class="title">人選期日</div>
-                <div class="list" v-for="item in items" :key="item.date">
+                <div class="list" v-for="(item, index) in items" :key="`fourth-${index}`">
                     <div class="list-nav">{{item.date}}</div>
                 </div>
             </li>
             <li>
                 <div class="title">開始日</div>
-                <div class="list" v-for="item in items" :key="item.satrtDate">
+                <div class="list" v-for="(item, index) in items" :key="`fifth-${index}`">
                     <div class="list-nav">{{item.satrtDate}}</div>
                 </div>
             </li>
             <li>
                 <div class="title">求人タイトル</div>
-                <div class="list" v-for="item in items" :key="item.title">
+                <div class="list" v-for="(item, index) in items" :key="`sixth-${index}`">
                     <div class="list-nav">{{item.title}}</div>
                 </div>
             </li>
             <li>
                 <div class="title">最寄駅</div>
-                <div class="list" v-for="item in items" :key="item.station">
+                <div class="list" v-for="(item, index) in items" :key="`seventh-${index}`">
                     <div class="list-nav">{{item.station}}</div>
                 </div>
             </li>
             <li>
                 <div class="title">雇用期間</div>
-                <div class="list" v-for="item in items" :key="item.period">
+                <div class="list" v-for="(item, index) in items" :key="`eighth-${index}`">
                     <div class="list-nav">{{item.period}}</div>
                 </div>
             </li>
             <li>
                 <div class="title">研修有無</div>
-                <div class="list" v-for="item in items" :key="item.training">
+                <div class="list" v-for="(item, index) in items" :key="`ninth-${index}`">
                     <div class="list-nav">{{item.training}}</div>
                 </div>
             </li>
             <li>
                 <div class="title">給与形態</div>
-                <div class="list" v-for="item in items" :key="item.salary">
+                <div class="list" v-for="(item, index) in items" :key="`tenth-${index}`">
                     <div class="list-nav">{{item.salary}}</div>
                 </div>
             </li>
@@ -139,29 +143,39 @@ export default {
                 salary:"月給"
                 },
             ],
-            sortOrder: 1,
+            checked: false,
             checked_items: [], 
         }
     },
-    computed: {
-        sortedItems(){
-            console.log(this.items);
-            return this.items.slice().sort((a, b) => {
-            return (a.id < b.id) ? -this.sortOrder : (a.id > b.id) ? this.sortOrder : 0;
-            })
-        },
-    },
     methods: {
-        changeOrder(){
-            this.sortOrder = this.sortOrder > 0 ? -1 : 1;
+        selectAllChecked (){
+            if(this.checked) {
+                this.checked_items = []
+                this.checked = true
+            } else {
+                this.checked_items = []
+                for (let item in this.items) {
+                    this.checked_items.push(this.items[item].id)
+                }
+                this.checked = true
+            }
+            console.log(this.checked_items);
         },
+        select (){
+            if(this.checked_items.length !== this.items.length) {
+                this.checked = false
+            } else {
+                this.checked =true
+            }
+        }
     }
 }
 </script>
 
-<style>
+<style scoped>
 #box1 {
     display: flex;
+    text-align: center;
 }
 .check {
     position: relative;
