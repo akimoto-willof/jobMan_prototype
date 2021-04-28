@@ -77,18 +77,21 @@ export default {
 ul {
     list-style: none;
 }
-/* 表示アニメーションをする前のスタイル */
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+/* アニメーション実装 */
+
 .v-enter {
   opacity: 0;
 }
 
-/* 表示アニメーション後のスタイル */
 .v-enter-to {
   opacity: 1;
 }
 
-/* 表示アニメーション動作中のスタイル */
 .v-enter-active {
   transition: all 1000ms;
 }
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+
 </style>
