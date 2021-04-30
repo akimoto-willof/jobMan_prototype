@@ -37,7 +37,7 @@
               @click="select"
             />
             <li class="details">
-              <button @click="displayUpShow">⇓</button>
+              <button @click="onActive(n)">⇓</button>
             </li>
             <li>
               <div class="list-nav">{{ item.id }}</div>
@@ -70,7 +70,7 @@
               <div class="list-nav">{{ item.salary }}</div>
             </li>
           </ul>
-          <ul class="list-detail" v-show="displayUp">
+          <ul class="list-detail" :class="{'is-active': activeItem === n}">
             <li class="list-nav-detail">
               <div class="list-nav-detail-title">求人ID</div>
               <div class="nav">{{ item.id }}</div>
@@ -184,7 +184,7 @@ export default {
       ],
       checked: false,
       checked_items: [],
-      displayUp: false,
+      activeItem: null
     };
   },
   methods: {
@@ -208,14 +208,15 @@ export default {
         this.checked = true;
       }
     },
-    displayUpShow(i) {
-      console.log(i)
-      if(i){
-        this.displayUp = true
+    onActive(n) {
+      if(this.activeItem === n) {
+        this.activeItem = null;
+      } else {
+        this.activeItem = n;
       }
     }
-  },
-};
+  }
+}
 </script>
 
 <style scoped>
@@ -270,8 +271,13 @@ li .list-nav {
 .list-nav-detail {
   text-align: left;
   color: #999999;
+  display: none;
 }
 .list-nav-detail:first-child {
   padding-left: 100px;
+}
+
+.is-active{
+  display: block;
 }
 </style>
