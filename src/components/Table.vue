@@ -37,7 +37,7 @@
               @click="select"
             />
             <li class="details">
-              <button @click="onActive(n)">⇓</button>
+              <button @click="toggle(index)">⇓</button>
             </li>
             <li>
               <div class="list-nav">{{ item.id }}</div>
@@ -70,7 +70,7 @@
               <div class="list-nav">{{ item.salary }}</div>
             </li>
           </ul>
-          <ul class="list-detail" :class="{'is-active': activeItem === n}">
+          <ul class="list-detail" v-show="show_contents.indexOf(index) >= 0">
             <li class="list-nav-detail">
               <div class="list-nav-detail-title">求人ID</div>
               <div class="nav">{{ item.id }}</div>
@@ -130,7 +130,6 @@ export default {
     return {
       items: [
         {
-          number: 1,
           id: "0000000000",
           name: "株式会社ウィルグループ",
           status: "見込み",
@@ -143,7 +142,6 @@ export default {
           salary: "月給",
         },
         {
-          number: 2,
           id: "0000000001",
           name: "株式会社ウィルグループ",
           status: "見込み",
@@ -156,7 +154,6 @@ export default {
           salary: "月給",
         },
         {
-          number: 3,
           id: "0000000002",
           name: "株式会社ウィルグループ",
           status: "見込み",
@@ -169,7 +166,6 @@ export default {
           salary: "月給",
         },
         {
-          number: 4,
           id: "0000000003",
           name: "株式会社ウィルグループ",
           status: "見込み",
@@ -184,7 +180,7 @@ export default {
       ],
       checked: false,
       checked_items: [],
-      activeItem: null
+      show_contents: []
     };
   },
   methods: {
@@ -208,11 +204,11 @@ export default {
         this.checked = true;
       }
     },
-    onActive(n) {
-      if(this.activeItem === n) {
-        this.activeItem = null;
+    toggle(data) {
+      if(this.show_contents.indexOf(data) >= 0) {
+        this.show_contents = this.show_contents.filter(n => n !== data)
       } else {
-        this.activeItem = n;
+        this.show_contents.push(data)
       }
     }
   }
@@ -271,7 +267,6 @@ li .list-nav {
 .list-nav-detail {
   text-align: left;
   color: #999999;
-  display: none;
 }
 .list-nav-detail:first-child {
   padding-left: 100px;
