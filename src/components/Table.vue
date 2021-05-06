@@ -23,96 +23,103 @@
         </draggable>
 
         <!-- 案件リスト -->
-        <div
-          class="list"
-          v-for="(item, index) in items"
-          :key="`first-${index}`"
-        >
-          <ul>
-            <input
-              type="checkbox"
-              class="checkbox"
-              v-model="checked_items"
-              :value="item.id"
-              @click="select"
-            />
-            <li class="details">
-              <button @click="toggle(index)">⇓</button>
-            </li>
-            <li>
-              <div class="list-nav">{{ item.id }}</div>
-            </li>
-            <li>
-              <div class="list-nav">{{ item.name }}</div>
-            </li>
-            <li>
-              <div class="list-nav">{{ item.status }}</div>
-            </li>
-            <li>
-              <div class="list-nav">{{ item.date }}</div>
-            </li>
-            <li>
-              <div class="list-nav">{{ item.startDate }}</div>
-            </li>
-            <li>
-              <div class="list-nav">{{ item.title }}</div>
-            </li>
-            <li>
-              <div class="list-nav">{{ item.station }}</div>
-            </li>
-            <li>
-              <div class="list-nav">{{ item.period }}</div>
-            </li>
-            <li>
-              <div class="list-nav">{{ item.training }}</div>
-            </li>
-            <li>
-              <div class="list-nav">{{ item.salary }}</div>
-            </li>
-          </ul>
-          <ul class="list-detail" v-show="show_contents.indexOf(index) >= 0">
-            <li class="list-nav-detail">
-              <div class="list-nav-detail-title">求人ID</div>
-              <div class="nav">{{ item.id }}</div>
-            </li>
-            <li class="list-nav-detail">
-              <div class="list-nav-detail-title">クライアント名</div>
-              <div class="nav">{{ item.name }}</div>
-            </li>
-            <li class="list-nav-detail">
-              <div class="list-nav-detail-title">ステータス</div>
-              <div class="nav">{{ item.status }}</div>
-            </li>
-            <li class="list-nav-detail">
-              <div class="list-nav-detail-title">人選期日</div>
-              <div class="nav">{{ item.date }}</div>
-            </li>
-            <li class="list-nav-detail">
-              <div class="list-nav-detail-title">開始日</div>
-              <div class="nav">{{ item.startDate }}</div>
-            </li>
-            <li class="list-nav-detail">
-              <div class="list-nav-detail-title">求人タイトル</div>
-              <div class="nav">{{ item.title }}</div>
-            </li>
-            <li class="list-nav-detail">
-              <div class="list-nav-detail-title">最寄駅</div>
-              <div class="nav">{{ item.station }}</div>
-            </li>
-            <li class="list-nav-detail">
-              <div class="list-nav-detail-title">雇用期間</div>
-              <div class="nav">{{ item.period }}</div>
-            </li>
-            <li class="list-nav-detail">
-              <div class="list-nav-detail-title">研修有無</div>
-              <div class="nav">{{ item.training }}</div>
-            </li>
-            <li class="list-nav-detail">
-              <div class="list-nav-detail-title">給与形態</div>
-              <div class="nav">{{ item.salary }}</div>
-            </li>
-          </ul>
-        </div>
+        <transition-group tag="div" name="vue-anime-list">
+          <div
+            class="list"
+            v-for="(item, index) in items"
+            :key="`first-${index}`"
+          >
+            <ul>
+              <input
+                type="checkbox"
+                class="checkbox"
+                v-model="checked_items"
+                :value="item.id"
+                @click="select"
+              />
+              <li class="details">
+                <button @click="toggle(index)">⇓</button>
+              </li>
+              <li>
+                <div class="list-nav">{{ item.id }}</div>
+              </li>
+              <li>
+                <div class="list-nav">{{ item.name }}</div>
+              </li>
+              <li>
+                <div class="list-nav">{{ item.status }}</div>
+              </li>
+              <li>
+                <div class="list-nav">{{ item.date }}</div>
+              </li>
+              <li>
+                <div class="list-nav">{{ item.startDate }}</div>
+              </li>
+              <li>
+                <div class="list-nav">{{ item.title }}</div>
+              </li>
+              <li>
+                <div class="list-nav">{{ item.station }}</div>
+              </li>
+              <li>
+                <div class="list-nav">{{ item.period }}</div>
+              </li>
+              <li>
+                <div class="list-nav">{{ item.training }}</div>
+              </li>
+              <li>
+                <div class="list-nav">{{ item.salary }}</div>
+              </li>
+            </ul>
+            <transition>
+              <ul
+                class="list-detail"
+                v-show="show_contents.indexOf(index) >= 0"
+              >
+                <li class="list-nav-detail">
+                  <div class="list-nav-detail-title">求人ID</div>
+                  <div class="nav">{{ item.id }}</div>
+                </li>
+                <li class="list-nav-detail">
+                  <div class="list-nav-detail-title">クライアント名</div>
+                  <div class="nav">{{ item.name }}</div>
+                </li>
+                <li class="list-nav-detail">
+                  <div class="list-nav-detail-title">ステータス</div>
+                  <div class="nav">{{ item.status }}</div>
+                </li>
+                <li class="list-nav-detail">
+                  <div class="list-nav-detail-title">人選期日</div>
+                  <div class="nav">{{ item.date }}</div>
+                </li>
+                <li class="list-nav-detail">
+                  <div class="list-nav-detail-title">開始日</div>
+                  <div class="nav">{{ item.startDate }}</div>
+                </li>
+                <li class="list-nav-detail">
+                  <div class="list-nav-detail-title">求人タイトル</div>
+                  <div class="nav">{{ item.title }}</div>
+                </li>
+                <li class="list-nav-detail">
+                  <div class="list-nav-detail-title">最寄駅</div>
+                  <div class="nav">{{ item.station }}</div>
+                </li>
+                <li class="list-nav-detail">
+                  <div class="list-nav-detail-title">雇用期間</div>
+                  <div class="nav">{{ item.period }}</div>
+                </li>
+                <li class="list-nav-detail">
+                  <div class="list-nav-detail-title">研修有無</div>
+                  <div class="nav">{{ item.training }}</div>
+                </li>
+                <li class="list-nav-detail">
+                  <div class="list-nav-detail-title">給与形態</div>
+                  <div class="nav">{{ item.salary }}</div>
+                </li>
+              </ul>
+            </transition>
+          </div>
+        </transition-group>
       </div>
     </div>
   </div>
@@ -180,7 +187,7 @@ export default {
       ],
       checked: false,
       checked_items: [],
-      show_contents: []
+      show_contents: [],
     };
   },
   methods: {
@@ -205,14 +212,14 @@ export default {
       }
     },
     toggle(data) {
-      if(this.show_contents.indexOf(data) >= 0) {
-        this.show_contents = this.show_contents.filter(n => n !== data)
+      if (this.show_contents.indexOf(data) >= 0) {
+        this.show_contents = this.show_contents.filter((n) => n !== data);
       } else {
-        this.show_contents.push(data)
+        this.show_contents.push(data);
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -272,7 +279,31 @@ li .list-nav {
   padding-left: 100px;
 }
 
-.is-active{
+.is-active {
   display: block;
 }
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+/* アニメーション実装 */
+
+.v-enter {
+  opacity: 0;
+}
+
+.v-enter-to {
+  opacity: 1;
+}
+
+.v-enter-active {
+  transition: all 1000ms;
+}
+
+.vue-anime-list-move {
+  transition-property: transform;
+  transition-delay: 0s;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.77, 0, 175, 1);
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
 </style>
