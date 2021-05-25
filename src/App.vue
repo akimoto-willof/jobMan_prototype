@@ -4,6 +4,7 @@
     <Table />
     <div class="calendar">
       <Calendar />
+      <Station />
     </div>
   </div>
 </template>
@@ -12,6 +13,7 @@
 import Table from '@/components/Table.vue';
 import Sideber from '@/components/Sideber.vue';
 import Calendar from '@/components/Calendar.vue';
+import Station from '@/components/Staition.vue';
 
 
 export default {
@@ -19,7 +21,8 @@ export default {
   components: {
     Table,
     Sideber,
-    Calendar
+    Calendar,
+    Station
   }
 }
 </script>
