@@ -4,6 +4,7 @@
     <Table />
     <div class="calendar">
       <Calendar />
+      <Location />
       <Station />
     </div>
   </div>
@@ -14,6 +15,7 @@ import Table from '@/components/Table.vue';
 import Sideber from '@/components/Sideber.vue';
 import Calendar from '@/components/Calendar.vue';
 import Station from '@/components/Staition.vue';
+import Location from '@/components/Location.vue';
 
 
 export default {
@@ -22,6 +24,7 @@ export default {
     Table,
     Sideber,
     Calendar,
+    Location,
     Station
   }
 }
