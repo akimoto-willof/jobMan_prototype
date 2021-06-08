@@ -6,6 +6,7 @@
       <Calendar />
       <Location />
       <Station />
+      <Validation />
     </div>
   </div>
 </template>
@@ -16,6 +17,7 @@ import Sideber from '@/components/Sideber.vue';
 import Calendar from '@/components/Calendar.vue';
 import Station from '@/components/Staition.vue';
 import Location from '@/components/Location.vue';
+import Validation from '@/components/Validation.vue';
 
 
 export default {
@@ -25,7 +27,8 @@ export default {
     Sideber,
     Calendar,
     Location,
-    Station
+    Station,
+    Validation
   }
 }
 </script>
